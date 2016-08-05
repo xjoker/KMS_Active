@@ -12,7 +12,7 @@ KMS_Active是用于激活 Windows 系统的一个自动化程序
 
     显示激活信息
     KMS_Active.exe /d /s active.server.com
-
+    ```
 # 参考连接
     Microsoft MSDN GetProductInfo function
     [GetProductInfo function](https://msdn.microsoft.com/zh-cn/library/windows/desktop/ms724358(v=vs.85).aspx)
