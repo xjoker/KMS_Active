@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
 using System.Management;
 
 namespace KMS_Active
 {
     static public class System_Info
     {
-
+        private static string systemdrive = Environment.ExpandEnvironmentVariables("%systemdrive%");
+        private static string Program_x86 = systemdrive+ "\\Program Files (x86)";
+        private static string Program = systemdrive + "\\Program Files";
 
         static public string KMS_key
         {
@@ -387,8 +391,24 @@ namespace KMS_Active
                 return SN;
             }
         }
-        //86313
-        //220575
+
+        static public string Office_KMS_key
+        {
+            get
+            {
+                string ospp = "";
+                foreach (var path in office_install_path)
+                {
+                    if (System.IO.File.Exists(path))
+                    {
+                        ospp = path;
+                        return ospp;
+                    }
+                }
+                return ospp;
+            }
+        }
+
 
         #region 系统版本对应表
         // 对应表 https://msdn.microsoft.com/zh-cn/library/windows/desktop/ms724358(v=vs.85).aspx
@@ -441,6 +461,20 @@ namespace KMS_Active
         private const int PRODUCT_ENTERPRISE_S_N = 0x0000007E;
         private const int PRODUCT_ENTERPRISE_S_N_EVALUATION = 0x00000082;
 
+        #endregion
+
+        #region Office OSPP path
+        private static string[] office_install_path = new string[]
+        {
+            Program+@"\Microsoft Office\Office16\OSPP.VBS",
+            Program_x86+@"\Microsoft Office\Office16\OSPP.VBS",
+            Program+@"\Microsoft Office\Office15\OSPP.VBS",
+            Program_x86+@"\Microsoft Office\Office15\OSPP.VBS",
+            Program+@"\Microsoft Office\Office14\OSPP.VBS",
+            Program_x86+@"\Microsoft Office\Office14\OSPP.VBS",
+            Program+@"\Microsoft Office\Office12\OSPP.VBS",
+            Program_x86+@"\Microsoft Office\Office12\OSPP.VBS",
+        };
         #endregion
     }
 }
