@@ -12,7 +12,11 @@ namespace KMS_Active
 
             if (args.Length<2)
             {
-                Console.WriteLine("P");
+                Console.WriteLine("Silent activation");
+                Console.WriteLine("KMS_Active.exe /s active.server.com ");
+                Console.WriteLine("");
+                Console.WriteLine("Activation information is displayed");
+                Console.WriteLine("KMS_Active.exe /d /s active.server.com");
                 Environment.Exit(0);
             }
 
