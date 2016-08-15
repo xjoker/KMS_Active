@@ -318,7 +318,7 @@ namespace KMS_Active
                     {
                         case 0:
                             {
-                                switch (OperatingSystemSKU)
+                                switch (PCSystemType)
                                 {
                                     case 1:
                                         {
